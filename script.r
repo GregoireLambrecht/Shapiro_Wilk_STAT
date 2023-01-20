@@ -40,9 +40,26 @@ lillie.test(female)
 
 shapiro.test(maleRandom)
 
-lillie.test(maeleRandom)
+lillie.test(maleRandom)
 
 shapiro.test(femaleRandom)
 
-lillie.test(femaleRandom)
+a = lillie.test(femaleRandom)
+
+P1 = 0
+P2 = 0 
+
+for(i in 1:100000){
+  Normal = rnorm(1000, 0, 1)
+  
+  p1 = shapiro.test(Normal)$p.value
+  p2 = lillie.test(Normal)$p.value
+  P1 = P1 +p1
+  P2 = P2 +p2
+}
+
+P1 = P1/100000
+P2 = P2/100000
+
+
 
